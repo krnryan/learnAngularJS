@@ -26,7 +26,7 @@
     <!--  Products Container  -->
     <div class="list-group">
       <!--  Product Container  -->
-      <div class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
+      <div class="list-group-item" ng-repeat="product in store.products.gems">
 
         <!-- $index Practice:  -->
         <h3>Gem #{{$index + 1}}: {{product.name | uppercase}}<em class="pull-right">{{product.price | currency}}</em>
