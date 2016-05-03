@@ -1,21 +1,54 @@
-<!doctype html>
-<html ng-app="store">
+<!DOCTYPE html>
+<html ng-app="gemStore">
 
 <head>
+    <meta charset="utf-8" />
+    <title>LearnAngularJS</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Javascripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+    <script src="js/products.js"></script>
 </head>
 
-<body ng-controller="StoreController as store">
-    <div ng-repeat="product in store.products"
-        <div ng-hide="product.soldOut">
-            <h1>{{product.name}}</h1>
-            <h2>{{product.price}}</h2>
-            <p>{{product.description}}</p>
-            <button ng-show="product.canPurchase">Add to Cart</button>
+  <body ng-controller="StoreController as store">
+    <!--  Store Header  -->
+    <header>
+      <h1 class="text-center">RMC Gem Finder</h1>
+      <h2 class="text-center">– scrumptious gems –</h2>
+    </header>
+
+    <!--  Products Container  -->
+    <div class="list-group">
+      <!--  Product Container  -->
+      <div class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
+
+        <!-- $index Practice:  -->
+        <h3>Gem #{{$index + 1}}: {{product.name | uppercase}}<em class="pull-right">{{product.price | currency}}</em>
+        </h3>
+
+        <!-- Image Gallery  -->
+        <div ng-show="product.images.length" ng-controller="GalleryController as gallery">
+          <div class="img-wrap">
+            <img ng-src="{{product.images[gallery.imageIndex]}}" class="img-thumbnail center-block" />
+          </div>
+          <ul class="img-thumbnails clearfix">
+            <li class="small-image pull-left thumbnail" ng-repeat="image in product.images" ng-click="gallery.setCurrent($index)">
+              <img ng-src="{{image}}" />
+            </li>
+          </ul>
         </div>
+
+        <!-- Product Tabs  -->
+        <product-tabs></product-tabs>
+
+      </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="js/app.js"></script>
-</body>
+  </body>
 
 </html>
