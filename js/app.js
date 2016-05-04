@@ -4,16 +4,16 @@
 (function () {
     "use strict";
 
-    var app = angular.module('gemStore', ['store-directives']);
+    angular.module('gemStore', ['store-directives']);
 
-    app.controller('GalleryController', function () {
+    angular.module('gemStore').controller('GalleryController', function () {
         this.imageIndex = 0;
         this.setCurrent = function (imageNumber) {
             this.imageIndex = imageNumber || 0;
         };
     });
 
-    app.controller('StoreController', [ '$http', function ($http) {
+    angular.module('gemStore').controller('StoreController', [ '$http', function ($http) {
         var store = this;
         store.products = [];
         
@@ -22,7 +22,7 @@
         });
     }]);
 
-    app.controller("ReviewController", function () {
+    angular.module('gemStore').controller("ReviewController", function () {
 
         this.review = {};
 

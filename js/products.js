@@ -1,8 +1,8 @@
 /*global angular*/
 
-var app = angular.module('store-directives', []);
+angular.module('store-directives', []);
 
-app.directive("descriptions", function () {
+angular.module('store-directives').directive("descriptions", function () {
     "use strict";
 
     return {
@@ -11,7 +11,7 @@ app.directive("descriptions", function () {
     };
 });
 
-app.directive("reviews", function () {
+angular.module('store-directives').directive("reviews", function () {
     "use strict";
 
     return {
@@ -20,7 +20,7 @@ app.directive("reviews", function () {
     };
 });
 
-app.directive("specs", function () {
+angular.module('store-directives').directive("specs", function () {
     "use strict";
 
     return {
@@ -29,7 +29,7 @@ app.directive("specs", function () {
     };
 });
 
-app.directive("productTabs", function () {
+angular.module('store-directives').directive("productTabs", function () {
     "use strict";
 
     return {
