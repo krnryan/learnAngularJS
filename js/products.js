@@ -36,17 +36,16 @@ angular.module('store-directives').directive("productTabs", function () {
         restrict: "E",
 
         templateUrl: "product-tabs.html",
-        controller: function () {
-            this.tab = 1;
+        controller: function ($scope) {
+            $scope.tab = 1;
 
-            this.isSet = function (checkTab) {
-                return this.tab === checkTab;
+            $scope.isSet = function (checkTab) {
+                return $scope.tab === checkTab;
             };
 
-            this.setTab = function (activeTab) {
-                this.tab = activeTab;
+            $scope.setTab = function (activeTab) {
+                $scope.tab = activeTab;
             };
-        },
-        controllerAs: "tab"
+        }
     };
 });
